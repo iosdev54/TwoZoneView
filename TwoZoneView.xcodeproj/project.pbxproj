@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C2701F2A190129004C3D1E /* FlagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2701E2A190129004C3D1E /* FlagModel.swift */; };
 		18F7C7F72A177E9600A9F461 /* TwoZoneViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */; };
 		18F7C7F92A177E9600A9F461 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7C7F82A177E9600A9F461 /* ContentView.swift */; };
 		18F7C7FB2A177E9900A9F461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F7C7FA2A177E9900A9F461 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18C2701E2A190129004C3D1E /* FlagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagModel.swift; sourceTree = "<group>"; };
 		18F7C7F32A177E9600A9F461 /* TwoZoneView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoZoneView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoZoneViewApp.swift; sourceTree = "<group>"; };
 		18F7C7F82A177E9600A9F461 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18C2701B2A190055004C3D1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18C2701E2A190129004C3D1E /* FlagModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18C2701C2A19005B004C3D1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18C2701D2A19006D004C3D1E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		18F7C7EA2A177E9600A9F461 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +77,9 @@
 			children = (
 				18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */,
 				18F7C7F82A177E9600A9F461 /* ContentView.swift */,
+				18C2701B2A190055004C3D1E /* Model */,
+				18C2701C2A19005B004C3D1E /* View */,
+				18C2701D2A19006D004C3D1E /* ViewModel */,
 				18F7C7FA2A177E9900A9F461 /* Assets.xcassets */,
 				18F7C7FC2A177E9900A9F461 /* Preview Content */,
 			);
@@ -137,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C2701F2A190129004C3D1E /* FlagModel.swift in Sources */,
 				18F7C7F92A177E9600A9F461 /* ContentView.swift in Sources */,
 				18F7C7F72A177E9600A9F461 /* TwoZoneViewApp.swift in Sources */,
 			);
