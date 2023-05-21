@@ -11,7 +11,7 @@ import SwiftUI
 struct TwoZoneViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FlagBuilderView()
         }
     }
 }

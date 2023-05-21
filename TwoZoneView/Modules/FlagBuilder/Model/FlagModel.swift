@@ -13,3 +13,7 @@ struct FlagModel {
     let positionX: CGFloat
     let positionY: CGFloat
 }
+
+extension FlagModel {
+    static let mock = FlagModel(width: 300, height: 300, positionX: 30, positionY: 30)
+}

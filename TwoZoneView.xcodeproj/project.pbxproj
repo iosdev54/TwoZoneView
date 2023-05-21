@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188353852A1A55E0005B03F8 /* FlagBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188353842A1A55E0005B03F8 /* FlagBuilderView.swift */; };
+		188353872A1A5675005B03F8 /* FlagBuilderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188353862A1A5675005B03F8 /* FlagBuilderViewModel.swift */; };
+		188353892A1A5BAA005B03F8 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188353882A1A5BAA005B03F8 /* ValidationError.swift */; };
+		1883538B2A1A5BD1005B03F8 /* TwoZoneHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883538A2A1A5BD1005B03F8 /* TwoZoneHandler.swift */; };
+		1883538D2A1A678C005B03F8 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883538C2A1A678C005B03F8 /* FlagView.swift */; };
 		18C2701F2A190129004C3D1E /* FlagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2701E2A190129004C3D1E /* FlagModel.swift */; };
 		18F7C7F72A177E9600A9F461 /* TwoZoneViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */; };
-		18F7C7F92A177E9600A9F461 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7C7F82A177E9600A9F461 /* ContentView.swift */; };
 		18F7C7FB2A177E9900A9F461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F7C7FA2A177E9900A9F461 /* Assets.xcassets */; };
 		18F7C7FE2A177E9900A9F461 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F7C7FD2A177E9900A9F461 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188353842A1A55E0005B03F8 /* FlagBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagBuilderView.swift; sourceTree = "<group>"; };
+		188353862A1A5675005B03F8 /* FlagBuilderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagBuilderViewModel.swift; sourceTree = "<group>"; };
+		188353882A1A5BAA005B03F8 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		1883538A2A1A5BD1005B03F8 /* TwoZoneHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoZoneHandler.swift; sourceTree = "<group>"; };
+		1883538C2A1A678C005B03F8 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 		18C2701E2A190129004C3D1E /* FlagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagModel.swift; sourceTree = "<group>"; };
 		18F7C7F32A177E9600A9F461 /* TwoZoneView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoZoneView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoZoneViewApp.swift; sourceTree = "<group>"; };
-		18F7C7F82A177E9600A9F461 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18F7C7FA2A177E9900A9F461 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18F7C7FD2A177E9900A9F461 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -34,10 +42,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		188353802A1A5547005B03F8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */,
+				18F7C7FA2A177E9900A9F461 /* Assets.xcassets */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		188353812A1A555E005B03F8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				188353822A1A5573005B03F8 /* FlagBuilder */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		188353822A1A5573005B03F8 /* FlagBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				18C2701B2A190055004C3D1E /* Model */,
+				18C2701C2A19005B004C3D1E /* View */,
+				18C2701D2A19006D004C3D1E /* ViewModel */,
+			);
+			path = FlagBuilder;
+			sourceTree = "<group>";
+		};
 		18C2701B2A190055004C3D1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				18C2701E2A190129004C3D1E /* FlagModel.swift */,
+				188353882A1A5BAA005B03F8 /* ValidationError.swift */,
+				1883538A2A1A5BD1005B03F8 /* TwoZoneHandler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -45,6 +82,8 @@
 		18C2701C2A19005B004C3D1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				188353842A1A55E0005B03F8 /* FlagBuilderView.swift */,
+				1883538C2A1A678C005B03F8 /* FlagView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -52,6 +91,7 @@
 		18C2701D2A19006D004C3D1E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				188353862A1A5675005B03F8 /* FlagBuilderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -75,12 +115,8 @@
 		18F7C7F52A177E9600A9F461 /* TwoZoneView */ = {
 			isa = PBXGroup;
 			children = (
-				18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */,
-				18F7C7F82A177E9600A9F461 /* ContentView.swift */,
-				18C2701B2A190055004C3D1E /* Model */,
-				18C2701C2A19005B004C3D1E /* View */,
-				18C2701D2A19006D004C3D1E /* ViewModel */,
-				18F7C7FA2A177E9900A9F461 /* Assets.xcassets */,
+				188353802A1A5547005B03F8 /* Main */,
+				188353812A1A555E005B03F8 /* Modules */,
 				18F7C7FC2A177E9900A9F461 /* Preview Content */,
 			);
 			path = TwoZoneView;
@@ -164,9 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188353852A1A55E0005B03F8 /* FlagBuilderView.swift in Sources */,
 				18C2701F2A190129004C3D1E /* FlagModel.swift in Sources */,
-				18F7C7F92A177E9600A9F461 /* ContentView.swift in Sources */,
 				18F7C7F72A177E9600A9F461 /* TwoZoneViewApp.swift in Sources */,
+				188353872A1A5675005B03F8 /* FlagBuilderViewModel.swift in Sources */,
+				1883538B2A1A5BD1005B03F8 /* TwoZoneHandler.swift in Sources */,
+				1883538D2A1A678C005B03F8 /* FlagView.swift in Sources */,
+				188353892A1A5BAA005B03F8 /* ValidationError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
