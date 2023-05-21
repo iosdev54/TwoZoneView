@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum Field {
+    case width
+    case height
+    case positionX
+    case positionY
+}
+
 enum ValidationError: String, LocalizedError, Identifiable {
     case sizeError
     case positionError
@@ -31,10 +38,20 @@ protocol TwoZoneHandler {
     )
 }
 
-struct FlagView: View {
+struct FlagView: View, TwoZoneHandler {
+    func onBlueZoneEvent(isPressed: Bool) {
+        print("Blue zome tapped \(isPressed)")
+    }
+    
+    func onYellowZoneEvent(idx: Int, x: Double, y: Double) {
+        
+    }
+    
     
     let flagModel: FlagModel
     let isBlueViewHidden: Bool
+    
+    @State var isBlueZoneTapped = false
     
     private var cornerRadius: CGFloat {
         flagModel.width > flagModel.height ? flagModel.width / 15 : flagModel.height / 15
@@ -57,6 +74,10 @@ struct FlagView: View {
                     Color.blue
                         .animation(.easeInOut(duration: 1))
                         .frame(height: geometry.size.height * 0.3)
+                        .onChange(of: isBlueZoneTapped) { isTapped in
+                            isTapped ? onBlueZoneEvent(isPressed: true) : onBlueZoneEvent(isPressed: false)
+                        }
+                        .gesture(blueZoneTap)
                 }
             }
             .cornerRadius(cornerRadius)
@@ -70,6 +91,16 @@ struct FlagView: View {
         .offset(x: flagModel.positionX, y: flagModel.positionY)
     }
     
+    private var blueZoneTap: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { _ in
+                isBlueZoneTapped = true
+            }
+            .onEnded { _ in
+                isBlueZoneTapped = false
+            }
+    }
+    
 }
 
 struct ContentView: View {
@@ -81,6 +112,11 @@ struct ContentView: View {
     @State private var isHiddenBlueView = false
     @State private var flagModel: FlagModel?
     @State private var validationError: ValidationError?
+    
+    @State private var blueButtonPressed = false
+    
+    @FocusState private var keyboardIsFocused: Bool
+    //    @FocusState private var focusedField: Field?
     
     var body: some View {
         VStack(spacing: 10) {
@@ -109,6 +145,16 @@ struct ContentView: View {
         .alert(item: $validationError) { error in
             Alert(title: Text("Error!"), message: Text(error.localizedDescription), dismissButton: .cancel())
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    keyboardIsFocused = false
+                }
+                
+            }
+        }
+        .onTapGesture(perform: dismissKeyboard)
     }
     
     private func headerView(title: String) -> some View {
@@ -127,7 +173,8 @@ struct ContentView: View {
             
             TextField(placeholder, text: value)
                 .textFieldStyle(.roundedBorder)
-                .keyboardType(.decimalPad)
+                .keyboardType(.numberPad)
+                .focused($keyboardIsFocused)
         }
     }
     
@@ -141,7 +188,13 @@ struct ContentView: View {
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
     
+    private func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     private func drawFlagPressed() {
+        keyboardIsFocused = false
+        
         let sizeRange = 0...Int.max
         let positionRange = Int.min...Int.max
         
