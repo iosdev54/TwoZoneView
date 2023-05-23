@@ -12,7 +12,7 @@ class YellowZoneView: UIView {
     var fingerIndices = [UITouch: Int]()
     var inactiveFingerIndices = [Int]()
     
-    var fingersIndexesArray: (([Int]) -> Void)?
+    var fingerIndicesArray: (([Int]) -> Void)?
     var yellowZoneEventData: ((YellowZoneDataModel) -> Void)?
     
     override init(frame: CGRect) {
@@ -70,7 +70,7 @@ class YellowZoneView: UIView {
         }
         
         let fingerIndex = fingerIndices[touch] ?? 0
-        fingersIndexesArray?(fingerIndices.values.sorted())
+        fingerIndicesArray?(fingerIndices.values.sorted())
         
         let position = CGPoint(
             x: (touchLocation.x / view.bounds.width) * 100,
@@ -87,7 +87,6 @@ class YellowZoneView: UIView {
             inactiveFingerIndices.append(fingerIndex)
         }
         
-        fingersIndexesArray?(fingerIndices.values.sorted())
+        fingerIndicesArray?(fingerIndices.values.sorted())
     }
-    
 }

@@ -18,7 +18,7 @@ struct YellowZoneRepresentable: UIViewRepresentable {
         yellowZoneView.yellowZoneEventData = { data in
             yellowZoneEventData(data)
         }
-        yellowZoneView.fingersIndexesArray = { indexes in
+        yellowZoneView.fingerIndicesArray = { indexes in
             fingersIndexesArray(indexes)
         }
         return yellowZoneView
