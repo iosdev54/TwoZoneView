@@ -132,7 +132,7 @@ struct FlagBuilderView: View {
     @ViewBuilder private var output: some View {
         if isOutputShown {
             VStack {
-                Text("Yellow zone indexes - \(outputYellowZoneString)")
+                Text("Yellow zone indices - \(outputYellowZoneString)")
                 
                 if !isBlueViewHidden {
                     Text("Blue zone is tapped - \(isBlueZoneTapped.description)")

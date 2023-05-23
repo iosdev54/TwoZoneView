@@ -29,8 +29,8 @@ struct FlagView: View, TwoZoneHandler {
                 VStack(spacing: 0) {
                     YellowZoneRepresentable { data in
                         onYellowZoneEvent(idx: data.fingerIndex, x: data.xPercentage, y: data.yPercentage)
-                    } fingersIndexesArray: { indexes in
-                        outputYellowZone = indexes.description
+                    } fingersIndicesArray: { indices in
+                        outputYellowZone = indices.description
                     }
                     .frame(height: geometry.size.height * (isBlueViewHidden ? 1 : 0.7))
                     

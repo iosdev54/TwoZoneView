@@ -10,7 +10,7 @@ import UIKit
 
 struct YellowZoneRepresentable: UIViewRepresentable {
     var yellowZoneEventData: (YellowZoneDataModel) -> Void
-    var fingersIndexesArray: ([Int]) -> Void
+    var fingersIndicesArray: ([Int]) -> Void
     
     func makeUIView(context: Context) -> YellowZoneView {
         let yellowZoneView = YellowZoneView()
@@ -18,8 +18,8 @@ struct YellowZoneRepresentable: UIViewRepresentable {
         yellowZoneView.yellowZoneEventData = { data in
             yellowZoneEventData(data)
         }
-        yellowZoneView.fingerIndicesArray = { indexes in
-            fingersIndexesArray(indexes)
+        yellowZoneView.fingerIndicesArray = { indices in
+            fingersIndicesArray(indices)
         }
         return yellowZoneView
     }
