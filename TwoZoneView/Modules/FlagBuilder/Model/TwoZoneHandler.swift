@@ -21,6 +21,6 @@ extension TwoZoneHandler {
     }
     
     func onYellowZoneEvent(idx: Int, x: Double, y: Double) {
-        print("Yellow zone tapped, finger index \(idx), with coordinate in percentage of (width : height) (\(x) : \(y))")
+        print("Yellow zone tapped, finger index \(idx), with coordinate in percentage of (width : height) (\(String(format: "%.2f", x)) : \(String(format: "%.2f", y)))")
     }
 }

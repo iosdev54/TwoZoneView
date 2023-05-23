@@ -1,3 +1,3 @@
-__Done by Dmytro Grytsenko__
+__Completed by Dmytro Grytsenko__
 
 Test app TwoZoneView.

@@ -25,27 +25,31 @@ struct FlagView: View, TwoZoneHandler {
     
     var body: some View {
         VStack {
-            
             GeometryReader { geometry in
                 VStack(spacing: 0) {
-                    
                     YellowZoneRepresentable { data in
                         onYellowZoneEvent(idx: data.fingerIndex, x: data.xPercentage, y: data.yPercentage)
                     } fingersIndexesArray: { indexes in
                         outputYellowZone = indexes.description
                     }
                     .frame(height: geometry.size.height * (isBlueViewHidden ? 1 : 0.7))
-                    .background(.yellow)
                     
                     if !isBlueViewHidden {
                         Rectangle()
                             .fill(.black)
                             .frame(height: lineWidth)
                         
-                        Color.blue
-                            .animation(.easeInOut(duration: 1))
-                            .frame(height: geometry.size.height * 0.3)
-                            .gesture(blueZoneTap)
+                        BlueZoneRepresentable { bool in
+                            onBlueZoneEvent(isPressed: bool)
+                            bool == true ? (isBlueZoneTapped = true) : (isBlueZoneTapped = false)
+                        }
+                        .frame(height: geometry.size.height * 0.3)
+                        
+                        //Можно использовать такой способ, но может нарушиться обработка касаний, так как при нажатии сначала синей зоны - желтую будет нажать невозможно, что противоречит условию!
+                        //                        Color.blue
+                        //                            .frame(height: geometry.size.height * 0.3)
+                        //                            .gesture(blueZoneTap)
+                        
                     }
                 }
                 .cornerRadius(cornerRadius)
@@ -60,20 +64,20 @@ struct FlagView: View, TwoZoneHandler {
         }
     }
     
-    private var blueZoneTap: some Gesture {
-        DragGesture(minimumDistance: 0)
-            .onChanged { _ in
-                guard !isBlueZoneTapped else { return }
-                isBlueZoneTapped = true
-                DispatchQueue.main.async {
-                    onBlueZoneEvent(isPressed: true)
-                }
-            }
-            .onEnded { _ in
-                isBlueZoneTapped = false
-                onBlueZoneEvent(isPressed: false)
-            }
-    }
+    //    private var blueZoneTap: some Gesture {
+    //        DragGesture(minimumDistance: 0)
+    //            .onChanged { _ in
+    //                guard !isBlueZoneTapped else { return }
+    //                isBlueZoneTapped = true
+    //                DispatchQueue.main.async {
+    //                    onBlueZoneEvent(isPressed: true)
+    //                }
+    //            }
+    //            .onEnded { _ in
+    //                isBlueZoneTapped = false
+    //                onBlueZoneEvent(isPressed: false)
+    //            }
+    //    }
 }
 
 struct FlagView_Previews: PreviewProvider {

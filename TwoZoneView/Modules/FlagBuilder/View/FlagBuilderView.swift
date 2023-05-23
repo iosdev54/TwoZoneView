@@ -139,7 +139,6 @@ struct FlagBuilderView: View {
                 }
             }
             .padding()
-            .zIndex(1)
         }
     }
 }

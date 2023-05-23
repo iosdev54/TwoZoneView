@@ -8,27 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct YellowZoneRepresentable: UIViewRepresentable {
-    
-    var yellowZoneEventData: (YellowZoneDataModel) -> Void
-    var fingersIndexesArray: ([Int]) -> Void
-    
-    func makeUIView(context: Context) -> YellowZoneView {
-        let yellowZoneView = YellowZoneView()
-        yellowZoneView.yellowZoneEventData = { data in
-            yellowZoneEventData(data)
-        }
-        yellowZoneView.fingersIndexesArray = { indexes in
-            fingersIndexesArray(indexes)
-        }
-        return yellowZoneView
-    }
-    
-    func updateUIView(_ uiView: YellowZoneView, context: Context) { }
-}
-
 class YellowZoneView: UIView {
-    
     var fingerIndices = [UITouch: Int]()
     var inactiveFingerIndices = [Int]()
     
@@ -50,6 +30,9 @@ class YellowZoneView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
+        if fingerIndices.isEmpty {
+            inactiveFingerIndices = []
+        }
         for touch in touches {
             handleTap(touch)
         }
@@ -108,4 +91,3 @@ class YellowZoneView: UIView {
     }
     
 }
-
