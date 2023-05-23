@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-
-struct YellowZoneEventData {
-    let fingerIndex: Int
-    let xPercentage: CGFloat
-    let yPercentage: CGFloat
-}
-
-enum DragState {
-    case inactive
-    case dragging(translation: CGSize)
-}
-
 struct FlagView: View, TwoZoneHandler {
     let flagModel: FlagModel
     let isBlueViewHidden: Bool
@@ -26,8 +14,7 @@ struct FlagView: View, TwoZoneHandler {
     @Binding var isBlueZoneTapped: Bool
     @Binding var isYellowZoneTapped: Bool
     
-    @GestureState private var dragState = DragState.inactive
-    @State private var yellowZoneTouches: [Int: CGPoint] = [:]
+    @Binding var outputYellowZone: String
     
     private var cornerRadius: CGFloat {
         flagModel.width > flagModel.height ? flagModel.width / 15 : flagModel.height / 15
@@ -39,18 +26,16 @@ struct FlagView: View, TwoZoneHandler {
     var body: some View {
         VStack {
             
-            ForEach(Array(yellowZoneTouches.keys), id: \.self) { fingerIndex in
-                Text("\(fingerIndex)")
-            }
-            
             GeometryReader { geometry in
                 VStack(spacing: 0) {
-                    Color.yellow
-                        .frame(height: geometry.size.height * (isBlueViewHidden ? 1 : 0.7))
-                        .gesture(dragGesture(proxy: geometry))
-                        .onAppear {
-                            yellowZoneTouches = [:]
-                        }
+                    
+                    YellowZoneRepresentable { data in
+                        onYellowZoneEvent(idx: data.fingerIndex, x: data.xPercentage, y: data.yPercentage)
+                    } fingersIndexesArray: { indexes in
+                        outputYellowZone = indexes.description
+                    }
+                    .frame(height: geometry.size.height * (isBlueViewHidden ? 1 : 0.7))
+                    .background(.yellow)
                     
                     if !isBlueViewHidden {
                         Rectangle()
@@ -73,7 +58,6 @@ struct FlagView: View, TwoZoneHandler {
             .frame(width: flagModel.width, height: flagModel.height)
             .offset(x: flagModel.positionX, y: flagModel.positionY)
         }
-        
     }
     
     private var blueZoneTap: some Gesture {
@@ -90,54 +74,10 @@ struct FlagView: View, TwoZoneHandler {
                 onBlueZoneEvent(isPressed: false)
             }
     }
-    
-    private func dragGesture(proxy: GeometryProxy) -> some Gesture {
-        DragGesture(minimumDistance: 0)
-            .updating($dragState) { value, state, _ in
-                state = .dragging(translation: value.translation)
-            }
-            .onChanged { value in
-                let touchLocation = value.location
-                let fingerIndex = value.startLocation == touchLocation ? yellowZoneTouches.count : getFingerIndex(for: touchLocation)
-                
-                yellowZoneTouches[fingerIndex] = touchLocation
-                
-                if touchLocationIsInYellowZone(touchLocation, proxy: proxy) {
-                    onYellowZoneEvent(fingerIndex: fingerIndex, touchLocation: touchLocation, proxy: proxy)
-                }
-            }
-            .onEnded { value in
-                let touchLocation = value.location
-                let fingerIndex = getFingerIndex(for: touchLocation)
-                yellowZoneTouches.removeValue(forKey: fingerIndex)
-            }
-    }
-    
-    func getFingerIndex(for touchLocation: CGPoint) -> Int {
-        let sortedKeys = yellowZoneTouches.keys.sorted()
-        let nextIndex = sortedKeys.last ?? 0
-        return nextIndex
-    }
-    
-    func touchLocationIsInYellowZone(_ location: CGPoint, proxy: GeometryProxy) -> Bool {
-        let yellowRect = CGRect(x: proxy.frame(in: .local).origin.x, y: proxy.frame(in: .local).origin.x, width: proxy.size.width, height: isBlueViewHidden ? proxy.size.height : proxy.size.height * 0.7)
-        
-        return yellowRect.contains(location)
-    }
-    
-    func onYellowZoneEvent(fingerIndex: Int, touchLocation: CGPoint, proxy: GeometryProxy) {
-        let normalizedX = (touchLocation.x / proxy.size.width) * 100
-        let normalizedY = (touchLocation.y / (isBlueViewHidden ? proxy.size.height : proxy.size.height * 0.7)) * 100
-        
-        let data = YellowZoneEventData(fingerIndex: fingerIndex, xPercentage: normalizedX, yPercentage: normalizedY)
-        print("Yellow zone event: \(data)")
-    }
-    
-    
 }
 
 struct FlagView_Previews: PreviewProvider {
     static var previews: some View {
-        FlagView(flagModel: .mock, isBlueViewHidden: false, isBlueZoneTapped: .constant(false), isYellowZoneTapped: .constant(false))
+        FlagView(flagModel: .mock, isBlueViewHidden: false, isBlueZoneTapped: .constant(false), isYellowZoneTapped: .constant(false), outputYellowZone: .constant("[0, 1]"))
     }
 }

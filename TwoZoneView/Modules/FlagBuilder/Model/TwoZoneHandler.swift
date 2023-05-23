@@ -17,10 +17,10 @@ protocol TwoZoneHandler {
 
 extension TwoZoneHandler {
     func onBlueZoneEvent(isPressed: Bool) {
-        print("Blue zone tapped \(isPressed.description.uppercased())")
+        print("Blue zone tapped - \(isPressed.description)")
     }
     
     func onYellowZoneEvent(idx: Int, x: Double, y: Double) {
-        print("Yellow zone tapped, finger index \(idx), with coordinate in percentage of width / height [\(x)\(y)]")
+        print("Yellow zone tapped, finger index \(idx), with coordinate in percentage of (width : height) (\(x) : \(y))")
     }
 }
