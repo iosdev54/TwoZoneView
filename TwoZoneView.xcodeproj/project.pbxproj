@@ -17,6 +17,7 @@
 		188353892A1A5BAA005B03F8 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188353882A1A5BAA005B03F8 /* ValidationError.swift */; };
 		1883538B2A1A5BD1005B03F8 /* TwoZoneHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883538A2A1A5BD1005B03F8 /* TwoZoneHandler.swift */; };
 		1883538D2A1A678C005B03F8 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883538C2A1A678C005B03F8 /* FlagView.swift */; };
+		1895D2CF2A2F564C00C1C17A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1895D2CE2A2F564C00C1C17A /* .gitignore */; };
 		18BD013E2A1B6B870073723B /* YellowZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD013D2A1B6B870073723B /* YellowZoneView.swift */; };
 		18C2701F2A190129004C3D1E /* FlagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2701E2A190129004C3D1E /* FlagModel.swift */; };
 		18F7C7F72A177E9600A9F461 /* TwoZoneViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7C7F62A177E9600A9F461 /* TwoZoneViewApp.swift */; };
@@ -35,6 +36,7 @@
 		188353882A1A5BAA005B03F8 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		1883538A2A1A5BD1005B03F8 /* TwoZoneHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoZoneHandler.swift; sourceTree = "<group>"; };
 		1883538C2A1A678C005B03F8 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
+		1895D2CE2A2F564C00C1C17A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		18BD013D2A1B6B870073723B /* YellowZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowZoneView.swift; sourceTree = "<group>"; };
 		18C2701E2A190129004C3D1E /* FlagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagModel.swift; sourceTree = "<group>"; };
 		18F7C7F32A177E9600A9F461 /* TwoZoneView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoZoneView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 			children = (
 				18F7C7F52A177E9600A9F461 /* TwoZoneView */,
 				1830B7AE2A1CDFAF00BCFC1A /* Readme.md */,
+				1895D2CE2A2F564C00C1C17A /* .gitignore */,
 				18F7C7F42A177E9600A9F461 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1895D2CF2A2F564C00C1C17A /* .gitignore in Resources */,
 				18F7C7FE2A177E9900A9F461 /* Preview Assets.xcassets in Resources */,
 				18F7C7FB2A177E9900A9F461 /* Assets.xcassets in Resources */,
 				1830B7AF2A1CDFAF00BCFC1A /* Readme.md in Resources */,
